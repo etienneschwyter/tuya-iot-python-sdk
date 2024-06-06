@@ -33,7 +33,7 @@ class TuyaTokenInfo:
         platform_url: user region platform url
     """
 
-    def __init__(self, token_response: dict[str, Any] = None):
+    def __init__(self, token_response: dict) -> None:
         """Init TuyaTokenInfo."""
         result = token_response.get("result", {})
 
@@ -91,9 +91,9 @@ class TuyaOpenAPI:
         self,
         method: str,
         path: str,
-        params: dict[str, Any] | None = None,
-        body: dict[str, Any] | None = None,
-    ) -> tuple[str, int]:
+        params=None,#: dict[str, Any] | None = None,
+        body=None,#: dict[str, Any] | None = None,
+    ):# -> tuple[str, int]:
 
         # HTTPMethod
         str_to_sign = method
@@ -177,7 +177,7 @@ class TuyaOpenAPI:
         password: str = "",
         country_code: str = "",
         schema: str = "",
-    ) -> dict[str, Any]:
+    ):# -> dict[str, Any]:
         """Connect to Tuya Cloud.
 
         Args:
@@ -231,9 +231,9 @@ class TuyaOpenAPI:
         self,
         method: str,
         path: str,
-        params: dict[str, Any] | None = None,
-        body: dict[str, Any] | None = None,
-    ) -> dict[str, Any]:
+        params = None,#: dict[str, Any] | None = None,
+        body = None,#: dict[str, Any] | None = None,
+    ):# -> dict[str, Any]:
 
         self.__refresh_access_token_if_need(path)
 
@@ -287,7 +287,7 @@ class TuyaOpenAPI:
 
         return result
 
-    def get(self, path: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
+    def get(self, path: str, params=None):#: dict[str, Any] | None = None) -> dict[str, Any]:
         """Http Get.
 
         Requests the server to return specified resources.
@@ -301,7 +301,7 @@ class TuyaOpenAPI:
         """
         return self.__request("GET", path, params, None)
 
-    def post(self, path: str, body: dict[str, Any] | None = None) -> dict[str, Any]:
+    def post(self, path: str, body=None):#: dict[str, Any] | None = None) -> dict[str, Any]:
         """Http Post.
 
         Requests the server to update specified resources.
@@ -315,7 +315,7 @@ class TuyaOpenAPI:
         """
         return self.__request("POST", path, None, body)
 
-    def put(self, path: str, body: dict[str, Any] | None = None) -> dict[str, Any]:
+    def put(self, path: str, body=None):#: dict[str, Any] | None = None) -> dict[str, Any]:
         """Http Put.
 
         Requires the server to perform specified operations.
@@ -329,7 +329,7 @@ class TuyaOpenAPI:
         """
         return self.__request("PUT", path, None, body)
 
-    def delete(self, path: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
+    def delete(self, path: str, params=None):#: dict[str, Any] | None = None) -> dict[str, Any]:
         """Http Delete.
 
         Requires the server to delete specified resources.
