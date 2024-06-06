@@ -1,5 +1,6 @@
 """Tuya Open API."""
-from __future__ import annotations
+#from __future__ import annotations
+from typing import Any, Optional, Dict, Tuple
 
 import hashlib
 import hmac
